@@ -6,7 +6,7 @@ import com.validation.validation.exception.UserNotFoundException;
 import com.validation.validation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +39,9 @@ public class UserService {
             throw new UserNotFoundException();
         }
         return res.get();
+    }
+
+    public boolean emailAvailability(String email){
+        return user.existsByEmail(email);
     }
 }

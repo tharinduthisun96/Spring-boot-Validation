@@ -1,10 +1,11 @@
 package com.validation.validation.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.validation.validation.validation.EmailAvailabilityCheck;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
 
 import javax.validation.constraints.*;
 import java.sql.Date;
@@ -17,6 +18,7 @@ public class UserCreateDto {
     private String name;
 
     @Email(message = "Wrong Email")
+    @EmailAvailabilityCheck
     private String email;
 
     @NotNull
