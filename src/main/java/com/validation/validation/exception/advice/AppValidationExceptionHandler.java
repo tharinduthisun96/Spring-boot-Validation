@@ -13,7 +13,11 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class AppValidationExceptionHandler {
-
+    /**+
+     *
+     * @param ex
+     * @return
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleInvalidArgument(MethodArgumentNotValidException ex){
@@ -24,6 +28,11 @@ public class AppValidationExceptionHandler {
                 .collect(Collectors.toMap(e->e.getField(),e->e.getDefaultMessage()));
     }
 
+    /**+
+     * 
+     * @param ex
+     * @return
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(UserNotFoundException.class)
     public Map<String, String> handleEmptyResults(UserNotFoundException ex){

@@ -11,15 +11,22 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
     private UserService service;
+    public UserController(@Autowired UserService service){
+        this.service = service;
+    }
 
+    /**+
+     *
+     * @param userRequest
+     * @return
+     */
     @PostMapping("/signup")
     public ResponseEntity<User> saveUser(@RequestBody @Valid UserCreateDto userRequest){
         return new ResponseEntity<>(service.saveUser(userRequest), HttpStatus.CREATED);
